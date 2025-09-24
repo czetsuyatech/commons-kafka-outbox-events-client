@@ -1,7 +1,7 @@
 package com.czetsuyatech.events.client.messaging.consumers;
 
 import com.czetsuyatech.events.client.messaging.constants.TopicKeys;
-import com.czetsuyatech.events.config.UniAppConfig;
+import com.czetsuyatech.events.config.UniKafkaEventAppConfig;
 import com.czetsuyatech.events.mappers.EventMapper;
 import com.czetsuyatech.events.messaging.consumers.UniEventConsumer;
 import com.czetsuyatech.events.messaging.exceptions.EventFailedException;
@@ -9,10 +9,10 @@ import com.czetsuyatech.events.messaging.exceptions.EventRetryableException;
 import com.czetsuyatech.events.messaging.messages.UniEventDTO;
 import com.czetsuyatech.events.services.UniDeadLetterService;
 import com.czetsuyatech.events.services.UniInboundEventService;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.stereotype.Component;
+import tools.jackson.databind.ObjectMapper;
 
 @Component
 @Slf4j
@@ -21,7 +21,7 @@ public class IgnoredConsumer extends UniEventConsumer {
   private final ObjectMapper om;
 
   public IgnoredConsumer(
-      UniAppConfig appConfig,
+      UniKafkaEventAppConfig appConfig,
       ConsumerFactory<String, String> consumerFactory,
       UniInboundEventService uniInboundEventService,
       UniDeadLetterService uniDeadLetterService,

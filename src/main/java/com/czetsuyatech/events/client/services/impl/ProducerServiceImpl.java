@@ -1,6 +1,5 @@
 package com.czetsuyatech.events.client.services.impl;
 
-import com.czetsuyatech.events.client.config.AppConfig;
 import com.czetsuyatech.events.client.messaging.producers.FailedProducer;
 import com.czetsuyatech.events.client.messaging.producers.IgnoredProducer;
 import com.czetsuyatech.events.client.messaging.producers.ProcessedProducer;
@@ -19,7 +18,6 @@ import org.springframework.transaction.annotation.Transactional;
 @Slf4j
 public class ProducerServiceImpl implements ProducerService {
 
-  private final AppConfig appConfig;
   private final ProcessedProducer processedProducer;
   private final FailedProducer failedProducer;
   private final IgnoredProducer ignoredProducer;
@@ -84,7 +82,7 @@ public class ProducerServiceImpl implements ProducerService {
         .createdBy("SYSTEM")
         .eventType("TEST")
         .eventVersion(1)
-        .eventSource(appConfig.getName())
+        .eventSource("CzetsuyaTech")
         .entityName("PROCESSED")
         .callbackTopic(null)
         .entityData("{\"name\":\"Edward Legaspi\",\"alias\":\"czetsuya\",\"age\":39}")

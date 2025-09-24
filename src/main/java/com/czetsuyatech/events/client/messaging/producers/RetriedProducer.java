@@ -1,7 +1,7 @@
 package com.czetsuyatech.events.client.messaging.producers;
 
 import com.czetsuyatech.events.client.messaging.constants.TopicKeys;
-import com.czetsuyatech.events.config.UniAppConfig;
+import com.czetsuyatech.events.config.UniKafkaEventAppConfig;
 import com.czetsuyatech.events.messaging.producers.AbstractUniEventProducer;
 import com.czetsuyatech.events.messaging.producers.UniEventProducer;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class RetriedProducer extends AbstractUniEventProducer {
 
-  public RetriedProducer(UniAppConfig appConfig,
+  public RetriedProducer(UniKafkaEventAppConfig appConfig,
       UniEventProducer uniEventProducer) {
     super(appConfig, uniEventProducer);
   }

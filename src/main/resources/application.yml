@@ -10,41 +10,52 @@ spring:
   # Datasource Configuration
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:mysql://localhost:3301/unifiedevents
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: db_user
-    password: db_pass_123
+    url: jdbc:postgresql://localhost:5432/czetsuyatech
+    driver-class-name: org.postgresql.Driver
+    username: unifiedevents
+    password: unifiedevents
     hikari:
+      schema: unifiedevents
+      pool-name: unifiedevents-pool
       connection-test-query: SELECT 1
-      jdbc-url: ${spring.datasource.url}
-      maximum-pool-size: 17
+      maximum-pool-size: 20
       minimum-idle: 10
-      pool-name: ue-db-pool
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+      keepalive-time: 60000
+      jdbc-url: ${spring.datasource.url}
       username: ${spring.datasource.username}
       password: ${spring.datasource.password}
 
   # JPA Configuration
   jpa:
-    database-platform: org.hibernate.dialect.MySQLDialect
     generate-ddl: false
     open-in-view: false
     show-sql: false
+    database: postgresql
+    hibernate:
+      ddl-auto: validate
     properties:
       hibernate:
         jdbc:
           batch_size: 5
+          time_zone: "UTC"
         generate_statistics: false
-    hibernate:
-      ddl-auto: update
+        format_sql: true
+        enable_lazy_load_no_trans: true # This anti-pattern/trade-off is only set to unblock further development
+        log:
+          non_contextual_creation: true
+
+  # Flyway Configuration
   flyway:
     enabled: true
-    locations: classpath:db/migrations
+    locations: classpath:db/migration
+    baseline-on-migrate: true
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
-    url: ${spring.datasource.url}
-
-app:
-  name: UnifiedKafkaEvents
+    default-schema: ${spring.datasource.hikari.schema}
+    fail-on-missing-locations: true
 
 unified-kafka-events:
   enabled: true

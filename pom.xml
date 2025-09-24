@@ -6,7 +6,7 @@
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
-    <version>3.0.6</version>
+    <version>4.0.0-M3</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
   <groupId>com.czetsuyatech.commons</groupId>
@@ -17,30 +17,33 @@
   <properties>
     <java.version>17</java.version>
 
-    <unified-kafka-events.version>LATEST-SNAPSHOT</unified-kafka-events.version>
+    <unified-kafka-events.version>0.0.1-SNAPSHOT</unified-kafka-events.version>
   </properties>
 
   <dependencies>
     <dependency>
       <groupId>com.czetsuyatech.commons</groupId>
-      <artifactId>unified-kafka-events</artifactId>
+      <artifactId>commons-kafka-outbox-events</artifactId>
       <version>${unified-kafka-events.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-flyway</artifactId>
+    </dependency>
     <dependency>
       <groupId>org.flywaydb</groupId>
-      <artifactId>flyway-mysql</artifactId>
+      <artifactId>flyway-database-postgresql</artifactId>
     </dependency>
 
     <dependency>
-      <groupId>com.mysql</groupId>
-      <artifactId>mysql-connector-j</artifactId>
-      <version>8.0.32</version>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
       <scope>runtime</scope>
+      <version>42.7.7</version>
     </dependency>
 
     <dependency>

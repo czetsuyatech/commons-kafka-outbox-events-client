@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @EnableUnifiedKafkaEvents
-public class UnifiedKafkaEventsConfig {
+public class ExternalServicesConfig {
 
 }
