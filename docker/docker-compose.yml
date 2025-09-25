@@ -33,7 +33,6 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:7.6.1
-    hostname: kafka
     container_name: kafka-outbox-events
     ports:
       - "9092:9092"
@@ -52,3 +51,18 @@ services:
       KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1  # Since we’re running one broker, one replica is enough.
       KAFKA_LOG_RETENTION_HOURS: 168  # Keep logs for 7 days.
       KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0  # No delay for consumer rebalancing.
+    networks:
+      - backend
+
+#  kafdrop:
+#    image: obsidiandynamics/kafdrop
+#    container_name: kafdrop
+#    ports:
+#      - "9000:9000"
+#    environment:
+#      KAFKA_BROKERCONNECT: kafka:9092
+#      JVM_OPTS: "-Xms32M -Xmx64M"
+#    depends_on:
+#      - kafka
+#    networks:
+#      - backend
