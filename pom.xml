@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>org.springframework.boot</groupId>
@@ -9,22 +9,22 @@
     <version>4.0.0-M3</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
-  <groupId>com.czetsuyatech.commons</groupId>
-  <artifactId>commons-kafka-outbox-events-client</artifactId>
+  <groupId>com.czetsuyatech</groupId>
+  <artifactId>ct-unified-kafka-events-client</artifactId>
   <version>LATEST-SNAPSHOT</version>
   <name>Unified Kafka Events Client</name>
 
   <properties>
     <java.version>17</java.version>
 
-    <unified-kafka-events.version>0.0.1-SNAPSHOT</unified-kafka-events.version>
+    <ct-unified-kafka-events.version>0.0.1-SNAPSHOT</ct-unified-kafka-events.version>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>com.czetsuyatech.commons</groupId>
-      <artifactId>commons-kafka-outbox-events</artifactId>
-      <version>${unified-kafka-events.version}</version>
+      <groupId>com.czetsuyatech</groupId>
+      <artifactId>ct-unified-kafka-events</artifactId>
+      <version>${ct-unified-kafka-events.version}</version>
     </dependency>
     <dependency>
       <groupId>org.springframework.boot</groupId>

@@ -1,4 +1,4 @@
-package com.czetsuyatech.events.client.services;
+package com.czetsuyatech.messaging.client.services;
 
 public interface ProducerService {
 

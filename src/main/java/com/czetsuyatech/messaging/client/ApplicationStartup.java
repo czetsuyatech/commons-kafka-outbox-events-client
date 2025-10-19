@@ -1,10 +1,9 @@
-package com.czetsuyatech.events.client;
+package com.czetsuyatech.messaging.client;
 
-import com.czetsuyatech.events.client.messaging.consumers.IgnoredConsumer;
-import com.czetsuyatech.events.client.messaging.consumers.FailedConsumer;
-import com.czetsuyatech.events.client.messaging.consumers.ProcessedConsumer;
-import com.czetsuyatech.events.client.messaging.consumers.RetriedConsumer;
-import com.czetsuyatech.events.client.messaging.producers.RetriedProducer;
+import com.czetsuyatech.messaging.client.messaging.consumers.IgnoredConsumer;
+import com.czetsuyatech.messaging.client.messaging.consumers.FailedConsumer;
+import com.czetsuyatech.messaging.client.messaging.consumers.ProcessedConsumer;
+import com.czetsuyatech.messaging.client.messaging.consumers.RetriedConsumer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationListener;

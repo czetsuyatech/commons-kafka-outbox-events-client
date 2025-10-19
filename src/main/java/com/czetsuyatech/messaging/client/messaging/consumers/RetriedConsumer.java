@@ -1,14 +1,14 @@
-package com.czetsuyatech.events.client.messaging.consumers;
+package com.czetsuyatech.messaging.client.messaging.consumers;
 
-import com.czetsuyatech.events.client.messaging.constants.TopicKeys;
-import com.czetsuyatech.events.config.UniKafkaEventAppConfig;
-import com.czetsuyatech.events.mappers.EventMapper;
-import com.czetsuyatech.events.messaging.consumers.UniEventConsumer;
-import com.czetsuyatech.events.messaging.exceptions.EventFailedException;
-import com.czetsuyatech.events.messaging.exceptions.EventRetryableException;
-import com.czetsuyatech.events.messaging.messages.UniEventDTO;
-import com.czetsuyatech.events.services.UniDeadLetterService;
-import com.czetsuyatech.events.services.UniInboundEventService;
+import com.czetsuyatech.messaging.client.messaging.constants.TopicKeys;
+import com.czetsuyatech.messaging.config.UniKafkaEventAppConfig;
+import com.czetsuyatech.messaging.mappers.EventMapper;
+import com.czetsuyatech.messaging.messaging.consumers.UniEventConsumer;
+import com.czetsuyatech.messaging.messaging.exceptions.EventFailedException;
+import com.czetsuyatech.messaging.messaging.exceptions.EventRetryableException;
+import com.czetsuyatech.messaging.messaging.messages.UniEventDTO;
+import com.czetsuyatech.messaging.services.UniDeadLetterService;
+import com.czetsuyatech.messaging.services.UniInboundEventService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.core.ConsumerFactory;
 import org.springframework.stereotype.Component;
@@ -16,11 +16,11 @@ import tools.jackson.databind.ObjectMapper;
 
 @Component
 @Slf4j
-public class FailedConsumer extends UniEventConsumer {
+public class RetriedConsumer extends UniEventConsumer {
 
   private final ObjectMapper om;
 
-  public FailedConsumer(
+  public RetriedConsumer(
       UniKafkaEventAppConfig appConfig,
       ConsumerFactory<String, String> consumerFactory,
       UniInboundEventService uniInboundEventService,
@@ -38,14 +38,14 @@ public class FailedConsumer extends UniEventConsumer {
 
     log.debug("Filtering event");
 
-    return uniEvent.getEntityName().startsWith("FAILED")
+    return uniEvent.getEntityName().startsWith("RETRIED")
         ? true
         : false;
   }
 
   @Override
   protected String getTopicKey() {
-    return TopicKeys.TOPIC_FAILED;
+    return TopicKeys.TOPIC_RETRIED;
   }
 
   @Override
@@ -59,7 +59,7 @@ public class FailedConsumer extends UniEventConsumer {
 
     log.info("Handling message={}", uniEvent);
 
-    throw new EventFailedException("KO", "Failed");
+    throw new EventRetryableException("KO", "RETRY");
   }
 
   @Override

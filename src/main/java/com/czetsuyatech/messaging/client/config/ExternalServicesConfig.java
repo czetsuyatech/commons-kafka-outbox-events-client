@@ -1,6 +1,6 @@
-package com.czetsuyatech.events.client.config;
+package com.czetsuyatech.messaging.client.config;
 
-import com.czetsuyatech.events.EnableUnifiedKafkaEvents;
+import com.czetsuyatech.messaging.EnableUnifiedKafkaEvents;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

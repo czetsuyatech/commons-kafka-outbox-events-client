@@ -1,4 +1,4 @@
-package com.czetsuyatech.events.client.messaging.constants;
+package com.czetsuyatech.messaging.client.messaging.constants;
 
 public final class TopicKeys {
 

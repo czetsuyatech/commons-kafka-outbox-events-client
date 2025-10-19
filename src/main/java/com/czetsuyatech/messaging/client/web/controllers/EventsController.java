@@ -1,6 +1,6 @@
-package com.czetsuyatech.events.client.web.controllers;
+package com.czetsuyatech.messaging.client.web.controllers;
 
-import com.czetsuyatech.events.client.services.ProducerService;
+import com.czetsuyatech.messaging.client.services.ProducerService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;

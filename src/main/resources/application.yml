@@ -50,57 +50,58 @@ spring:
   # Flyway Configuration
   flyway:
     enabled: true
-    locations: classpath:db/migration
+    locations: classpath:migration/flyway
     baseline-on-migrate: true
     user: ${spring.datasource.username}
     password: ${spring.datasource.password}
     default-schema: ${spring.datasource.hikari.schema}
     fail-on-missing-locations: true
 
-unified-kafka-events:
-  enabled: true
-  kafka:
-    bootstrap-servers: localhost:9092
-    consumer-group: Lab
-    retry-delay: 120
-    max-retry-attempts: 5
-    properties:
-      version: 1
-    inbound:
-      retry-cron: 0 0/2 * ? * *
-      retry-chunk-size: 50
-      clean-cron: 0 0 0 ? 1/6 *
-      clean-lifespan: 100
-      topics:
-        events-processed:
-          name: Unified.Kafka.Event.Processed
-          consumer-number: 1
-        events-failed:
-          name: Unified.Kafka.Event.Failed
-          consumer-number: 1
-        events-ignored:
-          name: Unified.Kafka.Event.Ignored
-          consumer-number: 1
-        events-retried:
-          name: Unified.Kafka.Event.Retried
-          consumer-number: 1
-        events-retried-retry:
-          name: Unified.Kafka.Event.Retried-retry
-          consumer-number: 1
+czetsuya-tech:
+  unified-kafka-events:
+    enabled: true
+    kafka:
+      bootstrap-servers: localhost:9092
+      consumer-group: Lab
+      retry-delay: 120
+      max-retry-attempts: 5
+      properties:
+        version: 1
+      inbound:
+        retry-cron: 0 0/2 * ? * *
+        retry-chunk-size: 50
+        clean-cron: 0 0 0 ? 1/6 *
+        clean-lifespan: 100
+        topics:
+          events-processed:
+            name: Unified.Kafka.Event.Processed
+            consumer-number: 1
+          events-failed:
+            name: Unified.Kafka.Event.Failed
+            consumer-number: 1
+          events-ignored:
+            name: Unified.Kafka.Event.Ignored
+            consumer-number: 1
+          events-retried:
+            name: Unified.Kafka.Event.Retried
+            consumer-number: 1
+          events-retried-retry:
+            name: Unified.Kafka.Event.Retried-retry
+            consumer-number: 1
 
-    outbound:
-      retry-cron: 0 0/2 * ? * *
-      retry-chunk-size: 50
-      clean-cron: 0 0 0 ? 1/6 *
-      clean-lifespan: 100
-      topics:
-        events-processed:
-          name: Unified.Kafka.Event.Processed
-        events-failed:
-          name: Unified.Kafka.Event.Failed
-        events-ignored:
-          name: Unified.Kafka.Event.Ignored
-        events-retried:
-          name: Unified.Kafka.Event.Retried
-        events-retried-retry:
-          name: Unified.Kafka.Event.Retried-retry
+      outbound:
+        retry-cron: 0 0/2 * ? * *
+        retry-chunk-size: 50
+        clean-cron: 0 0 0 ? 1/6 *
+        clean-lifespan: 100
+        topics:
+          events-processed:
+            name: Unified.Kafka.Event.Processed
+          events-failed:
+            name: Unified.Kafka.Event.Failed
+          events-ignored:
+            name: Unified.Kafka.Event.Ignored
+          events-retried:
+            name: Unified.Kafka.Event.Retried
+          events-retried-retry:
+            name: Unified.Kafka.Event.Retried-retry

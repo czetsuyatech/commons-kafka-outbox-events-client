@@ -1,11 +1,11 @@
-package com.czetsuyatech.events.client.services.impl;
+package com.czetsuyatech.messaging.client.services.impl;
 
-import com.czetsuyatech.events.client.messaging.producers.FailedProducer;
-import com.czetsuyatech.events.client.messaging.producers.IgnoredProducer;
-import com.czetsuyatech.events.client.messaging.producers.ProcessedProducer;
-import com.czetsuyatech.events.client.messaging.producers.RetriedProducer;
-import com.czetsuyatech.events.client.services.ProducerService;
-import com.czetsuyatech.events.messaging.messages.UniEventDTO;
+import com.czetsuyatech.messaging.client.messaging.producers.FailedProducer;
+import com.czetsuyatech.messaging.client.messaging.producers.IgnoredProducer;
+import com.czetsuyatech.messaging.client.messaging.producers.ProcessedProducer;
+import com.czetsuyatech.messaging.client.messaging.producers.RetriedProducer;
+import com.czetsuyatech.messaging.client.services.ProducerService;
+import com.czetsuyatech.messaging.messaging.messages.UniEventDTO;
 import java.time.Instant;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;

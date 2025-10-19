@@ -1,4 +1,4 @@
-name: CzetsuyaTechCommons
+name: czetsuyatech
 
 networks:
   backend:
@@ -33,7 +33,7 @@ services:
 
   kafka:
     image: confluentinc/cp-kafka:7.6.1
-    container_name: kafka-outbox-events
+    container_name: unified-kafka-events
     ports:
       - "9092:9092"
     environment:
