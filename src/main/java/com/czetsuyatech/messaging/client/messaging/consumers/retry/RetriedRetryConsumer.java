@@ -1,6 +1,7 @@
-package com.czetsuyatech.messaging.client.messaging.consumers;
+package com.czetsuyatech.messaging.client.messaging.consumers.retry;
 
 import com.czetsuyatech.messaging.client.messaging.constants.TopicKeys;
+import com.czetsuyatech.messaging.client.messaging.consumers.RetriedConsumer;
 import com.czetsuyatech.messaging.config.UniKafkaEventAppConfig;
 import com.czetsuyatech.messaging.mappers.EventMapper;
 import com.czetsuyatech.messaging.messaging.consumers.UniEventRetryConsumer;
@@ -47,7 +48,7 @@ public class RetriedRetryConsumer extends UniEventRetryConsumer {
   }
 
   @Override
-  protected void handleMessage(UniEventDTO uniEvent) throws EventRetryableException, EventFailedException {
+  public void handleMessage(UniEventDTO uniEvent) throws EventRetryableException, EventFailedException {
 
     log.info("Handling retry message={}", uniEvent);
 

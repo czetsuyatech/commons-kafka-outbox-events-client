@@ -55,7 +55,7 @@ public class RetriedConsumer extends UniEventConsumer {
   }
 
   @Override
-  protected void handleMessage(UniEventDTO uniEvent) throws EventRetryableException, EventFailedException {
+  public void handleMessage(UniEventDTO uniEvent) throws EventRetryableException, EventFailedException {
 
     log.info("Handling message={}", uniEvent);
 

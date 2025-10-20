@@ -1,0 +1,8 @@
+czetsuya-tech:
+  unified-kafka-events:
+    kafka:
+      inbound:
+        retry-cron: 0/30 * * ? * *
+        retry-chunk-size: 50
+        clean-cron: 0/30 * * ? 1/6 *
+        clean-lifespan: 100
